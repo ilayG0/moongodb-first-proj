@@ -2,8 +2,7 @@ module.exports = {
   apps: [
     {
       name: "pokedex-server",
-      script: "npm",
-      args: "run dev",
+      script: "src/server.js", 
       env: {
         NODE_ENV: "production",
         PORT: 3000,
