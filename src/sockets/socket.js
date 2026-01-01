@@ -5,7 +5,7 @@ const { registerBattleHandlers } = require("./battle.handlers");
 function attachSocket(server) {
 const allowedOrigins = [
   "http://localhost:4200",
-  "http://ec2-98-88-19-150.compute-1.amazonaws.com",
+  "http://ec2-34-227-9-63.compute-1.amazonaws.com",
 ];
 
   const io = new Server(server, {
