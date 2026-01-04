@@ -17,18 +17,18 @@ jobs:
 
       - name: Sync repo on EC2
         run: |
-          cd /home/ubuntu/moongodb-first-proj
+          cd /home/ubuntu/pokedex-server
           git fetch origin
           git reset --hard origin/main
 
       - name: Install dependencies
         run: |
-          cd /home/ubuntu/moongodb-first-proj
+          cd /home/ubuntu/pokedex-server
           npm ci
 
       - name: Reload with PM2
         run: |
-          cd /home/ubuntu/moongodb-first-proj
+          cd /home/ubuntu/pokedex-server
           pm2 startOrReload ecosystem.config.js 
           pm2 save
       - name: Health check with retries
@@ -36,10 +36,10 @@ jobs:
           for i in {1..10}; do
             echo "Health check attempt $i..."
             if curl -f http://127.0.0.1/health > /dev/null 2>&1; then
-              echo "Health check OK ✅"
+              echo "Health check OK"
               exit 0
             fi
             sleep 3
           done
-          echo "Health check failed after retries ❌"
+          echo "Health check failed after retries"
           exit 1
